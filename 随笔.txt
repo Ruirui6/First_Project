@@ -1,0 +1,87 @@
+python3 manage.py runserver 0.0.0.0:8000
+python3 manage.py makemigrations
+python3 manage.py migrate
+
+查看所有端口netstat -ano
+端口xxxx的信息netstat -aon|findstr xxxx 得到xxxx的PID：yyy
+查看yyy是哪个进程tasklist|findstr yyy 得到aaa.exe
+结束该进程taskkill /f /t /im aaa.exe
+.bat 脚本
+
+F:\mongodb\bin\mongod --dbpath F:\mongodb\data\db
+mongo
+mongostat
+mongotop
+net start MongoDB
+
+doubanmovie SET ModifiedFieldsAndValues WHERE AllFieldsAndOldValues LIMIT 1
+
+副本集：
+mongod ——dbpath D:\mongodb\data ——replSet repset
+mongod ——dbpath D:\mongodb_slave1\data ——port 27018 ——replSet repset
+mongod ——dbpath D:\mongodb_slave2\data ——port 27019 ——replSet repset
+mongo
+use admin
+config = { _id:"repset", members:[
+{_id:0,host:" 127.0.0.1:27017"},
+{_id:1,host:" 127.0.0.1:27018"},
+{_id:2,host:" 127.0.0.1:27019"}]
+}
+rs.initiate(config);
+rs.status()
+
+
+make menuconfig 启动内核配置界面
+
+
+printk无法输出到打印台问题和linux日志文件详解：
+1. 查看当前控制台的打印级别
+ cat /proc/sys/kernel/printk
+ 4    4    1    7
+ 其中第一个“4”表示内核打印函数printk的打印级别，只有级别比他高的信息才能在控制台上打印出来，既 0－3级别的信息
+2. 修改打印
+ echo "新的打印级别  4    1    7" >/proc/sys/kernel/printk
+3. 不够打印级别的信息会被写到日志中可通过#dmesg 命令来查看
+4. printk的打印级别
+#define KERN_EMERG        "<0>"
+#define KERN_ALERT         "<1>"
+#define KERN_CRIT            "<2>"
+#define KERN_ERR             "<3>"
+#define KERN_WARNING   "<4>"
+#define KERN_NOTICE       "<5>"
+#define KERN_INFO            "<6>"
+#define KERN_DEBUG       "<7>"
+5、printk函数的使用
+printk(打印级别“要打印的信息”)  //“打印级别“即上面定义的几个宏
+为什么我用telnet不行，而用tty终端就行？
+1. 内核的printk把信息打到哪里去呢？这是在内核的命令行参数console=ttyXXX里指定死了，比如console=ttySAC0表示printk的信息输出到串口0
+2. telnet上去之后，printf的输出信息是输出到一个“虚拟的终端”去的，你可以用ps命令看一下这个telnet对应的/bin/sh进程ID，ls  /proc/进程ID/fd -l 就可以知道这个虚拟的终端对应什么文件。
+你可以看到0、1、2这3个文件都是对应一个“临时生成的虚拟的文件”
+3. 所以，内核的信息不可能在telnet界面显示出来，你想看的话，可以为dmesg命令查看 
+系统消息日志
+#ls /var/log
+dmesg     lastlog   messages  wtmp 
+/var/log目录下的20个Linux日志文件功能：
+/var/log/messages — 包括整体系统信息，其中也包含系统启动期间的日志。此外，mail，cron，daemon，kern和auth等内容也记录在var/log/messages日志中。
+/var/log/dmesg — 包含内核缓冲信息（kernel ring buffer）。在系统启动时，会在屏幕上显示许多与硬件有关的信息。可以用dmesg查看它们。
+/var/log/auth.log — 包含系统授权信息，包括用户登录和使用的权限机制等。
+/var/log/boot.log — 包含系统启动时的日志。
+/var/log/daemon.log — 包含各种系统后台守护进程日志信息。
+/var/log/dpkg.log – 包括安装或dpkg命令清除软件包的日志。
+/var/log/kern.log – 包含内核产生的日志，有助于在定制内核时解决问题。
+/var/log/lastlog — 记录所有用户的最近信息。这不是一个ASCII文件，因此需要用lastlog命令查看内容。
+/var/log/maillog /var/log/mail.log — 包含来着系统运行电子邮件服务器的日志信息。例如，sendmail日志信息就全部送到这个文件中。
+/var/log/user.log — 记录所有等级用户信息的日志。
+/var/log/Xorg.x.log — 来自X的日志信息。
+/var/log/alternatives.log – 更新替代信息都记录在这个文件中。
+/var/log/btmp – 记录所有失败登录信息。使用last命令可以查看btmp文件。例如，”last -f /var/log/btmp | more“。
+/var/log/cups — 涉及所有打印信息的日志。
+/var/log/anaconda.log — 在安装Linux时，所有安装信息都储存在这个文件中。
+/var/log/yum.log — 包含使用yum安装的软件包信息。
+/var/log/cron — 每当cron进程开始一个工作时，就会将相关信息记录在这个文件中。
+/var/log/secure — 包含验证和授权方面信息。例如，sshd会将所有信息记录（其中包括失败登录）在这里。
+/var/log/wtmp或/var/log/utmp — 包含登录信息。使用wtmp可以找出谁正在登陆进入系统，谁使用命令显示这个文件或信息等。
+/var/log/faillog – 包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。
+
+git push origin master
+git clone git@github.com:Ruirui6/Learngit.git
