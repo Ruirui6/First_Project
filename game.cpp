@@ -2,9 +2,9 @@
 #include <cstdlib>
 #include <cstring>
 using namespace std;
- 
-//È«¾Ö±äÁ¿
-const char fuhao[11][4] = { "©°", "©Ğ", "©´", "©À", "©à", "©È", "©¸", "©Ø", "©¼", "¡ğ", "¡ñ" };  //»­ÆåÅÌËùÓÃ¹¤¾ß
+//äº”å­æ£‹æ¸¸æˆ
+//ÃˆÂ«Å¸Ã–Â±Ã¤ÃÂ¿
+const char fuhao[11][4] = { "Â©Â°", "Â©Ã", "Â©Å½", "Â©Ã€", "Â©Ã ", "Â©Ãˆ", "Â©Å¾", "Â©Ã˜", "Â©Å’", "Â¡Ã°", "Â¡Ã±" };  //Â»Â­Ã†Ã¥Ã…ÃŒÃ‹Ã¹Ã“ÃƒÂ¹â‚¬Å¸ÃŸ
 int qipan[4][4];
 int step = 1;
  
@@ -25,12 +25,12 @@ void draw(int a[4][4])
  
 void move(int x,int y, char mov)
 {
-	if (qipan[x][y]!=step) cout << "ÇëÑ¡Ôñ¼º·½×Ó½øĞĞÒÆ¶¯£¡" << endl;
+	if (qipan[x][y]!=step) cout << "Ã‡Ã«Ã‘Â¡Ã”Ã±Å’ÂºÂ·Å“Ã—Ã“Å“Ã¸ÃÃÃ’Ã†Â¶Â¯Â£Â¡" << endl;
 	else
 	{
 		if (mov == 'U')
 		{
-			if (x == 0) cout << "ÎŞ·¨ÒÆ¶¯£¡" << endl;
+			if (x == 0) cout << "ÃÃÂ·Å¡Ã’Ã†Â¶Â¯Â£Â¡" << endl;
 			else
 			{
 				qipan[x][y] = 0;
@@ -41,7 +41,7 @@ void move(int x,int y, char mov)
 		}
 		else if (mov == 'D')
 		{
-			if (x == 3) cout << "ÎŞ·¨ÒÆ¶¯£¡" << endl;
+			if (x == 3) cout << "ÃÃÂ·Å¡Ã’Ã†Â¶Â¯Â£Â¡" << endl;
 			else
 			{
 				qipan[x][y] = 0;
@@ -51,7 +51,7 @@ void move(int x,int y, char mov)
 		}
 		else if (mov == 'L')
 		{
-			if (y == 0) cout << "ÎŞ·¨ÒÆ¶¯£¡" << endl;
+			if (y == 0) cout << "ÃÃÂ·Å¡Ã’Ã†Â¶Â¯Â£Â¡" << endl;
 			else
 			{
 				qipan[x][y] = 0;
@@ -61,7 +61,7 @@ void move(int x,int y, char mov)
 		}
 		else if (mov == 'R')
 		{
-			if (y == 3) cout << "ÎŞ·¨ÒÆ¶¯£¡" << endl;
+			if (y == 3) cout << "ÃÃÂ·Å¡Ã’Ã†Â¶Â¯Â£Â¡" << endl;
 			else 
 			{
 				qipan[x][y] = 0;
@@ -71,7 +71,7 @@ void move(int x,int y, char mov)
 		}
 		else
 		{
-			cout << "ÇëÊäÈëÕıÈ··½Ïò£¡" << endl;
+			cout << "Ã‡Ã«ÃŠÃ¤ÃˆÃ«Ã•Ã½ÃˆÂ·Â·Å“ÃÃ²Â£Â¡" << endl;
 		}
 	}
 }
@@ -150,7 +150,7 @@ int main()
 	a[0][0] = a[0][1] = a[0][2] = a[0][3] = 9, a[3][0] = a[3][1] = a[3][2] = a[3][3] = 10;
 	qipan[0][0] = qipan[0][1] = qipan[0][2] = qipan[0][3] = -1, qipan[3][0] = qipan[3][1] = qipan[3][2] = qipan[3][3] = 1;
 	draw(a);
-	cout << "ÇëÊäÈëËùÒÆ¶¯Æå×ÓÓëÒÆ¶¯·½Ïò(Æå×ÓÎªÊı×Ö£¬·½ÏòÎª¡°U£¬D£¬L£¬R¡±):" << endl;
+	cout << "Ã‡Ã«ÃŠÃ¤ÃˆÃ«Ã‹Ã¹Ã’Ã†Â¶Â¯Ã†Ã¥Ã—Ã“Ã“Ã«Ã’Ã†Â¶Â¯Â·Å“ÃÃ²(Ã†Ã¥Ã—Ã“ÃÂªÃŠÃ½Ã—Ã–Â£Â¬Â·Å“ÃÃ²ÃÂªÂ¡Â°UÂ£Â¬DÂ£Â¬LÂ£Â¬RÂ¡Â±):" << endl;
 	while (cin >> x >> y >> mov)
 	{
 		system("cls");
@@ -158,7 +158,7 @@ int main()
 		chizi(qipan);
 		if (panduan(qipan))
 		{
-			cout << "±¦±´¶ùÎÒÓ®ÁË£¡" << endl;
+			cout << "Â±Å Â±Å½Â¶Ã¹ÃÃ’Ã“Â®ÃÃ‹Â£Â¡" << endl;
 			break;
 		}
 		int a[4][4] =
@@ -177,10 +177,10 @@ int main()
 			}
 		}
 		draw(a);
-		cout << "ÇëÊäÈëËùÒÆ¶¯Æå×ÓÓëÒÆ¶¯·½Ïò(Æå×ÓÎªÊı×Ö£¬·½ÏòÎª¡°U£¬D£¬L£¬R¡±):" << endl;
+		cout << "Ã‡Ã«ÃŠÃ¤ÃˆÃ«Ã‹Ã¹Ã’Ã†Â¶Â¯Ã†Ã¥Ã—Ã“Ã“Ã«Ã’Ã†Â¶Â¯Â·Å“ÃÃ²(Ã†Ã¥Ã—Ã“ÃÂªÃŠÃ½Ã—Ã–Â£Â¬Â·Å“ÃÃ²ÃÂªÂ¡Â°UÂ£Â¬DÂ£Â¬LÂ£Â¬RÂ¡Â±):" << endl;
 		step = -step;
 	}
-	cout << "Ğ»Ğ»Ê¹ÓÃ" << endl;
+	cout << "ÃÂ»ÃÂ»ÃŠÂ¹Ã“Ãƒ" << endl;
 	system("Pause>nul");
 	return 0;
 }
