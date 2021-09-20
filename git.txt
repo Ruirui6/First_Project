@@ -1,0 +1,24 @@
+git config --global user.name  “aaa”
+git config --global user.email "aa@qq.com"
+ssh-keygen -t rsa -C "aa@qq.com"
+ssh -T git@git.oschina.net
+
+sudo git clone https://github.com/xxxx
+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 //github 密码
+fd9e2a6e793d0c0a4aa8c3031ab96acf  //gitee 密码
+
+//new
+git remote add xxx git@github.com:Ruirui6/xxx.git  //建立联系
+例如：git remote add github git@github.com:Ruirui6/learngit.git
+git remote set-url github https://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@github.com/Ruirui6/Learngit.git
+git push -u xxx master 
+
+//push
+git add 
+git commit -m "   "
+git push xxx master
+
+//delete 
+git remote -v
+git remote rm xxx
+
