@@ -8,10 +8,10 @@ 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 //github 密码
 fd9e2a6e793d0c0a4aa8c3031ab96acf  //gitee 密码
 
 //new
-git remote add xxx git@github.com:Ruirui6/xxx.git  //建立联系
+git remote add xxx(origin) git@github.com:Ruirui6/xxx.git  //建立联系
 例如：git remote add github git@github.com:Ruirui6/learngit.git
 git remote set-url github https://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@github.com/Ruirui6/Learngit.git
-git push -u xxx master 
+git push -u xxx(origin) master 
 
 //push
 git add 
